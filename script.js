@@ -7,6 +7,8 @@ const gridElement = document.getElementById('grid');
 
 const selectInput = document.getElementById('select');
 
+const resultElement = document.getElementById('result');
+
 
 // Functions create 
 
@@ -87,17 +89,28 @@ buttonElement.addEventListener('click', function () {
         // aggiungo una funzione che verrà eseguita ogni volta che si cliccherà sulla singola cella
 
         cell.addEventListener('click', () => {
-            // cell.classList.toggle('clicked');
-            // console.log(i);
+            
+         
 
             if (extractedNumber.includes(i)) {
                 cell.classList.add("cell-bomb");
                 console.log('partita terminata');
+                resultElement.innerText = 0;
             } else  {
                 cell.classList.add("cell-blue");
+                resultElement.innerText = parseInt(resultElement.innerHTML) + 1;
             }
 
         });
+
+        const difference = totalCells - 16;
+
+        if (resultElement > difference) {
+            console.log('partita terminata');
+            resultElement.innertext = 'Non hai vinto la partita';
+        } else {
+            resultElement.innertext = 'Hai vinto la partita';
+        }
 
 
         gridElement.appendChild(cell);
@@ -107,3 +120,4 @@ buttonElement.addEventListener('click', function () {
 });
 
 
+ 
