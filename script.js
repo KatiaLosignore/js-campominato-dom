@@ -8,9 +8,41 @@ const gridElement = document.getElementById('grid');
 const selectInput = document.getElementById('select');
 
 
-// Numero righe e colonne
+// Functions create 
+
+function createCell(content, difficult) {
+    const cell = document.createElement('div');
+    cell.append(content);
+    cell.classList.add('cell');
 
 
+
+    if (difficult === "1") {
+        cell.classList.add('cell-easy');
+    } else if (difficult === "2") {
+        cell.classList.add('cell-normal');
+    } else if (difficult === "3") {
+        cell.classList.add('cell-hard');
+    }
+    
+    return cell;
+}
+
+function getUniqueRandomRumber(min, max, listRandom) {
+    let randomNumber;
+
+    do {
+        randomNumber = Math.floor(Math.random() * (max + 1 - min)) + min;
+       
+    } while (listRandom.includes(randomNumber));
+
+     console.log(randomNumber);
+    return randomNumber;
+  
+}
+
+
+// Logica inserita al click del button
 
 buttonElement.addEventListener('click', function () {
 
@@ -31,37 +63,47 @@ buttonElement.addEventListener('click', function () {
 
 
 
+    let extractedNumber = [];
+
+    // Creo un ciclo che crea 16 numeri random da 1 al numero totale di celle e le aggiungo in un array chiamato extractedNumber
+
+    for (let i = 1; i <= 16; i++) {
+
+        const cellNumber = getUniqueRandomRumber(1, totalCells, extractedNumber);
+
+        extractedNumber.push(cellNumber);
+    }
+
+
+
+    // Creo un totale di celle uguale al livello di difficoltà scelta
+
     for (let i = 1; i <= totalCells; i++) {
 
+        
         const cell = createCell(i, valueSelect);
 
 
+        // aggiungo una funzione che verrà eseguita ogni volta che si cliccherà sulla singola cella
+
         cell.addEventListener('click', () => {
-            cell.classList.toggle('clicked');
-            console.log(i);
+            // cell.classList.toggle('clicked');
+            // console.log(i);
+
+            if (extractedNumber.includes(i)) {
+                cell.classList.add("cell-bomb");
+                console.log('partita terminata');
+            } else  {
+                cell.classList.add("cell-blue");
+            }
+
         });
 
+
         gridElement.appendChild(cell);
-
-
     }
 
 
 });
 
 
-function createCell(content, difficult) {
-    const cell = document.createElement('div');
-    cell.append(content);
-    cell.classList.add('cell');
-
-    if (difficult === "1") {
-        cell.classList.add('cell-easy');
-    } else if (difficult === "2") {
-        cell.classList.add('cell-normal');
-    } else if (difficult === "3") {
-        cell.classList.add('cell-hard');
-    }
-    
-    return cell;
-}

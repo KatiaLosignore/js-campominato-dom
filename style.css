@@ -78,7 +78,7 @@ p {
     justify-content: center;
 }
 
-#grid .cell.clicked {
+#grid .cell-blue {
     background-color: rgb(0,127,255);
    
 }
@@ -96,4 +96,8 @@ p {
 #grid .cell-hard {
     height: calc(100% / 7);
     width: calc(100% / 7);
+}
+
+#grid .cell-bomb {
+    background-color: red;
 }
