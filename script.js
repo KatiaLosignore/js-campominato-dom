@@ -85,27 +85,29 @@ buttonElement.addEventListener('click', function () {
         
         const cell = createCell(i, valueSelect);
 
+        let resultNumber = 0;
 
         // aggiungo una funzione che verrà eseguita ogni volta che si cliccherà sulla singola cella
 
         cell.addEventListener('click', () => {
             
-         
+          
 
             if (extractedNumber.includes(i)) {
                 cell.classList.add("cell-bomb");
                 console.log('partita terminata');
-                resultElement.innerText = 0;
+                resultElement.innerText = resultNumber;
             } else  {
                 cell.classList.add("cell-blue");
-                resultElement.innerText = parseInt(resultElement.innerHTML) + 1;
+                resultNumber = parseInt(resultElement.innerHTML) + 1;
+                resultElement.innerText = resultNumber;
             }
 
         });
 
         const difference = totalCells - 16;
 
-        if (resultElement > difference) {
+        if (resultNumber > difference) {
             console.log('partita terminata');
             resultElement.innertext = 'Non hai vinto la partita';
         } else {
