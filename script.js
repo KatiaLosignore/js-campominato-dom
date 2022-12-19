@@ -64,6 +64,7 @@ buttonElement.addEventListener('click', function () {
     }
 
 
+   
 
     let extractedNumber = [];
 
@@ -76,7 +77,7 @@ buttonElement.addEventListener('click', function () {
         extractedNumber.push(cellNumber);
     }
 
-
+      let resultNumber = 0;
 
     // Creo un totale di celle uguale al livello di difficoltà scelta
 
@@ -85,21 +86,21 @@ buttonElement.addEventListener('click', function () {
         
         const cell = createCell(i, valueSelect);
 
-        let resultNumber = 0;
+      
 
         // aggiungo una funzione che verrà eseguita ogni volta che si cliccherà sulla singola cella
 
         cell.addEventListener('click', () => {
             
-          
+           
 
             if (extractedNumber.includes(i)) {
                 cell.classList.add("cell-bomb");
                 console.log('partita terminata');
-                resultElement.innerText = resultNumber;
+                resultElement.innerText = 0;
             } else  {
                 cell.classList.add("cell-blue");
-                resultNumber = parseInt(resultElement.innerHTML) + 1;
+                resultNumber += 1;
                 resultElement.innerText = resultNumber;
             }
 
