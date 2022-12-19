@@ -9,6 +9,8 @@ const selectInput = document.getElementById('select');
 
 const resultElement = document.getElementById('result');
 
+const resultMessage = document.getElementById('result-message');
+
 
 // Functions create 
 
@@ -26,7 +28,7 @@ function createCell(content, difficult) {
     } else if (difficult === "3") {
         cell.classList.add('cell-hard');
     }
-    
+
     return cell;
 }
 
@@ -35,12 +37,12 @@ function getUniqueRandomRumber(min, max, listRandom) {
 
     do {
         randomNumber = Math.floor(Math.random() * (max + 1 - min)) + min;
-       
+
     } while (listRandom.includes(randomNumber));
 
-     console.log(randomNumber);
+    console.log(randomNumber);
     return randomNumber;
-  
+
 }
 
 
@@ -64,9 +66,11 @@ buttonElement.addEventListener('click', function () {
     }
 
 
-   
-
     let extractedNumber = [];
+
+
+    let resultNumber = 0;
+    let loser = false;
 
     // Creo un ciclo che crea 16 numeri random da 1 al numero totale di celle e le aggiungo in un array chiamato extractedNumber
 
@@ -77,50 +81,46 @@ buttonElement.addEventListener('click', function () {
         extractedNumber.push(cellNumber);
     }
 
-      let resultNumber = 0;
+
 
     // Creo un totale di celle uguale al livello di difficoltà scelta
 
     for (let i = 1; i <= totalCells; i++) {
 
-        
-        const cell = createCell(i, valueSelect);
 
-      
+        const cell = createCell(i, valueSelect);
 
         // aggiungo una funzione che verrà eseguita ogni volta che si cliccherà sulla singola cella
 
         cell.addEventListener('click', () => {
-            
-           
 
-            if (extractedNumber.includes(i)) {
+            if (extractedNumber.includes(i) && !loser) {
                 cell.classList.add("cell-bomb");
                 console.log('partita terminata');
-                resultElement.innerText = 0;
-            } else  {
-                cell.classList.add("cell-blue");
-                resultNumber += 1;
-                resultElement.innerText = resultNumber;
+                resultNumber = 0;
+                resultMessage.innerText = 'Hai Perso';
+                loser = true;
+            } else if (!loser) {
+                if (!cell.classList.contains('cell-blue')) {
+                    resultNumber += 1;
+                    cell.classList.add("cell-blue");
+                }
+            }
+
+            resultElement.innerText = resultNumber;
+
+            const difference = totalCells - 16;
+
+            if (resultNumber === difference) {
+                console.log('Hai vinto la partita');
+                resultMessage.innerText = `Hai vinto la partita con: ${resultNumber} punti`;
             }
 
         });
 
-        const difference = totalCells - 16;
-
-        if (resultNumber > difference) {
-            console.log('partita terminata');
-            resultElement.innertext = 'Non hai vinto la partita';
-        } else {
-            resultElement.innertext = 'Hai vinto la partita';
-        }
-
-
         gridElement.appendChild(cell);
     }
-
 
 });
 
 
- 
