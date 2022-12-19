@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campo Minato</title>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+   
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand"><img src="img/Logo.png" alt="Logo"><span id="text">Campo Minato</span></a>
+            <form class="d-flex" role="search">
+                <h6>Difficoltà:</h6>
+                <select id="select" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option value="1">Easy</option>
+                    <option value="2">Normal</option>
+                    <option value="3">Hard</option>
+                </select>
+                <button type="button" id="button" class="btn btn-secondary btn-sm">Play</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="grid">
+
+        </div>
+    </div>
+
+
+    <footer class="bg-white">
+        <p class="pt-4 ms-3">Made with <i class="bi bi-suit-heart-fill"></i> by <a href="#">Boolean</a></p>
+    </footer>
+
+
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

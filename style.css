@@ -1,0 +1,99 @@
+
+body {
+    background-color: rgb(127,255,212);
+}
+
+nav {
+    height: 90px;
+}
+
+nav #text {
+    margin-left: 20px;
+    font-size: 29px;
+    font-weight: bold;
+}
+
+.btn-sm {
+    --bs-btn-padding-x: 2.5rem;
+    --bs-btn-bg: rgb(233,233,237);
+    --bs-btn-color: black;
+     font-weight: 700;
+} 
+
+.btn-secondary {
+   --bs-btn-border-color: grey;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.form-select-sm {
+    margin-right: 10px;
+    width: 245px; 
+    font-weight: 700;
+    background-color: rgb(233,233,237);
+    border-color: grey;
+}
+
+h6 {
+    padding-top: 7px;
+    margin-right: 5px;    
+}
+
+footer {
+    height: 70px;
+}
+
+footer a {
+    color: rgb(183,158,206);
+}
+
+footer .bi-suit-heart-fill {
+    font-size: 12px;
+}
+
+p {
+    font-weight: 600;
+}
+
+#grid {
+    width: 700px;
+    height: 700px;
+    margin: 60px auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+#grid .cell {
+    border: 1px solid black;
+    cursor: pointer;
+    color: black;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#grid .cell.clicked {
+    background-color: rgb(0,127,255);
+   
+}
+
+#grid .cell-easy {
+    height: calc(100% / 10);
+    width: calc(100% / 10);
+}
+
+#grid .cell-normal {
+    height: calc(100% / 9);
+    width: calc(100% / 9);
+}
+
+#grid .cell-hard {
+    height: calc(100% / 7);
+    width: calc(100% / 7);
+}
